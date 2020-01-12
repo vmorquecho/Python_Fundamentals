@@ -69,3 +69,31 @@ for word in story_words:
     print(word)
 
 ########################################################################
+
+## functions
+def square(x):
+    return x * x
+
+square(5)
+
+def even_or_odd(n):
+    if n % 2 == 0:
+        print('even')
+        return
+    print('odd')
+
+even_or_odd(3)
+
+####################
+from urllib.request import urlopen
+
+def fetch_words():
+    with urlopen('http://sixty-north.com/c/t.txt') as story:
+        story_words = []
+        for line in story:
+            line_words = line.decode('utf-8').split()
+            for word in line_words:
+                story_words.append(word)
+    
+    for word in story_words:
+        print(word)
