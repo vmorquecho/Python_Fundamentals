@@ -97,3 +97,20 @@ def fetch_words():
     
     for word in story_words:
         print(word)
+
+
+###### WEB DEVELOPMENT "serivce.py"
+
+from flask import Flask
+
+# create an instance of flash and assigning it to the app variable
+app = Flask(__name__)
+
+@app.route("/") # route declaration
+def hello():
+    return "Hello World"
+
+### in terminal
+FLASK_APP=service.py flask run
+# http request
+curl localhost:5000
