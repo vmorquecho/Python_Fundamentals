@@ -114,3 +114,14 @@ def hello():
 FLASK_APP=service.py flask run
 # http request
 curl localhost:5000
+
+##### reloading python files when modified
+import importlib
+importlib.reload(hello_world) # within the arguements reload modifief file
+
+# py <3.4
+import imp
+import.reload(filename)
+
+# py 2.0
+reload(filename)
