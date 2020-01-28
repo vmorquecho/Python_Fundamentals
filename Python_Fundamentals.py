@@ -242,3 +242,152 @@ Docstrings provide help() in REPL
 """
 
 ############ "OBJECTS" module
+
+>>> a = 1
+>>> b = 4
+>>>
+>>>
+>>> a is b
+False
+>>> a = b
+>>> a is b
+True
+
+Python has nameed references to objects, references behave more like labels which allow us to retrieve objects
+
+Value VS Identity
+
+Value - equivalent "contents" (==)
+Identity - same object refernce (is)
+
+Value comparison can be controlled programatically
+
+>>> c = [4, 3, 1]
+>>> d = [4, 3, 1]
+>>> id(c)
+140559721832520
+>>> id(d)
+140559721834568
+>>> c == d # contents
+True
+>>> c is d # refernced object
+False
+
+# The garbage collector reclaims unreachable objects, objects with no tag/label
+
+>>> m = [9, 15, 24]
+>>> def modify(k):
+...     k.append(39)
+...     print("k =", k)
+...
+>>> modify(m)
+k = [9, 15, 24, 39]
+>>> m
+[9, 15, 24, 39]
+>>>
+>>> f = [14, 23, 37]
+>>> def replace(g):
+...     g = [17, 28, 45]
+...     print("g =", g)
+...
+>>> replace(f)
+g = [17, 28, 45]
+>>> f
+[14, 23, 37]
+>>> g
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'g' is not defined
+
+
+
+>>> def banner(message, border='-'):
+...     line = border * len(message)
+...     print(line)
+...     print(message)
+...     print(line)
+...
+>>> banner("Victor Morquecho") # this uses the default value '-'
+----------------
+Victor Morquecho
+----------------
+>>> banner("Victor Morquecho can do some Python")
+-----------------------------------
+Victor Morquecho can do some Python
+-----------------------------------
+
+>>> banner("Sun, Moon and Stars", "*") # or you can specify another value
+*******************
+Sun, Moon and Stars
+*******************
+
+>>> banner("Sun, Moon and Stars", border="*")
+*******************
+Sun, Moon and Stars
+*******************
+# keyword arguments can be specified in any order
+>>> banner(border=".", message="Hello from Earth")
+................
+Hello from Earth
+................
+>>>
+
+banner("Positional arg", "keyword arg")
+
+>>> def add_spam(menu=[]):
+...     menu.append("spam")
+...     return menu
+...
+>>> breakfast = ["bacon", "eggs"]
+>>> add_spam(breakfast)
+['bacon', 'eggs', 'spam']
+>>>
+>>> def add_steak():
+...     menu = []
+...     menu.append("steak")
+...     return menu
+...
+>>> breakfast
+['bacon', 'eggs', 'spam']
+>>>
+>>> add_steak(breakfast)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: add_steak() takes 0 positional arguments but 1 was given
+
+
+>>> def add_steak(menu=None):
+...     if menu is None:
+...         menu = []
+...     menu.append("spam")
+...     return menu
+...
+>>> add_steak()
+['spam']
+>>>
+
+
+Python is a dynamic type system, object types are only resolved at runtime
+
+Python Name Scopes:
+Local
+Enclosing
+Global
+Built-in
+
+>>> import words
+>>>
+>>> dir()
+['__annotations__', '__builtins__', '__doc__', '__loader__', '__name__', '__package__', '__spec__', 'a', 'add_spam', 'add_steak', 'b', 'banner', 'breakfast', 'c', 'd', 'f', 'm', 'modify', 'replace', 'words']
+>>>
+>>> dir(words)
+['__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'fetch_words', 'main', 'print_items', 'sys', 'urlopen']
+>>> dir(words.fetch_words)
+['__annotations__', '__call__', '__class__', '__closure__', '__code__', '__defaults__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__get__', '__getattribute__', '__globals__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__kwdefaults__', '__le__', '__lt__', '__module__', '__name__', '__ne__', '__new__', '__qualname__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__']
+>>> dir(words.fetch_words.__doc__)
+['__add__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__mod__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__rmod__', '__rmul__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'capitalize', 'casefold', 'center', 'count', 'encode', 'endswith', 'expandtabs', 'find', 'format', 'format_map', 'index',
+'isalnum', 'isalpha', 'isdecimal', 'isdigit', 'isidentifier', 'islower', 'isnumeric', 'isprintable', 'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip', 'maketrans', 'partition', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase', 'title', 'translate', 'upper', 'zfill']
+>>> help(words.fetch_words.__doc__)
+No Python documentation found for 'Fetch a list of words from a URL.\n    Args:\n        url: The URL of a UTF-8 text document.\n\n    Returns"\n        A list of stings'.
+Use help() to get the interactive help utility.
+Use help(str) for help on the str class.
