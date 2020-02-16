@@ -391,3 +391,115 @@ Built-in
 No Python documentation found for 'Fetch a list of words from a URL.\n    Args:\n        url: The URL of a UTF-8 text document.\n\n    Returns"\n        A list of stings'.
 Use help() to get the interactive help utility.
 Use help(str) for help on the str class.
+
+
+
+>>> # join method to concatenate objects together, ':' is used as the separator
+>>> colors = ':'.join(['#45ff34', '#56666', '#87ffa2'])
+>>> colors
+'#45ff34:#56666:#87ffa2'
+
+>>> colors.split(':') # ':' does exist, split at :
+['#45ff34', '#56666', '#87ffa2']
+>>>
+>>> colors.split('.') # '.' does not exist in list
+['#45ff34:#56666:#87ffa2']
+>>>
+>>> colors
+'#45ff34:#56666:#87ffa2'
+>>>
+>>> len(colors)
+22
+>>> len(colors.split('.'))
+1
+>>> len(colors.split(':'))
+3
+>>>
+# join with the empty string as separator ''
+>>> ''.join(['high', 'way', 'man'])
+'highwayman'
+
+# partition() method divides the string into three around a separator: prefix, separator, suffix
+# used for tuple unpacking
+>>> "unforgetable".partition('forget')
+('un', 'forget', 'able')
+>>>
+>>> departure, separator, arrival = "Raliegh:Virgina".partition(':')
+>>>
+>>> departure
+'Raliegh'
+>>> arrival
+'Virgina'
+>>> separator
+':'
+
+# Range
+>>> range(5, 10)
+range(5, 10)
+>>> list(range(5, 10))
+[5, 6, 7, 8, 9]
+>>>
+>>> list(range(5, 10, 2))
+[5, 7, 9]
+# range(start, stop, step)
+# range(stop)
+>>>
+>>> range(5)
+range(0, 5)
+>>>
+>>> for i in range(5):
+...     print(i)
+...
+0
+1
+2
+3
+4
+
+enumerate # should be used for unpacking tuples
+
+# list
+
+>>> a = "I accidentally the whole universe".split()
+>>> a
+['I', 'accidentally', 'the', 'whole', 'universe']
+>>> a.insert(2, "destroyed")
+>>> a
+['I', 'accidentally', 'destroyed', 'the', 'whole', 'universe']
+>>> a.insert(2, "the")
+>>> a
+['I', 'accidentally', 'the', 'destroyed', 'the', 'whole', 'universe']
+>>> ' '.join(a)
+'I accidentally the destroyed the whole universe'
+
+from pprint import pprint as pp
+>>> newDict = {'a': [1, 11], 'b': [3, 44], 'c': [55, 67]}
+>>> newDict
+{'a': [1, 11], 'b': [3, 44], 'c': [55, 67]}
+>>> pp(newDict)
+{'a': [1, 11], 'b': [3, 44], 'c': [55, 67]}
+>>> newDict.append({'d': [56, 5]})
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'dict' object has no attribute 'append'
+>>> dir(dict)
+['__class__', '__contains__', '__delattr__', '__delitem__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__', '__ne__', '__new__',
+'__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setitem__', '__sizeof__', '__str__', '__subclasshook__', 'clear', 'copy',
+'fromkeys', 'get', 'items', 'keys', 'pop', 'popitem', 'setdefault', 'update', 'values']
+>>> newDict.update({'d': [56, 5]})
+>>>
+>>> newDict
+{'a': [1, 11], 'b': [3, 44], 'c': [55, 67], 'd': [56, 5]}
+>>> newDict.update({'x': [6, 5], 'f': [4, 4], })
+>>>
+>>>
+>>> newDict
+{'a': [1, 11], 'b': [3, 44], 'c': [55, 67], 'd': [56, 5], 'x': [6, 5], 'f': [4, 4]}
+>>> pp(newDict)
+{'a': [1, 11],
+ 'b': [3, 44],
+ 'c': [55, 67],
+ 'd': [56, 5],
+ 'f': [4, 4],
+ 'x': [6, 5]}
+>>>
