@@ -503,3 +503,17 @@ AttributeError: 'dict' object has no attribute 'append'
  'f': [4, 4],
  'x': [6, 5]}
 >>>
+
+[ expr(item) for item in iterable ]
+
+lengths = []
+
+for word in words:
+    lengths.append(len(word))
+
+lengths
+
+
+
+####################### FILES AND RESOURCE MANAGEMENT #############################
+
