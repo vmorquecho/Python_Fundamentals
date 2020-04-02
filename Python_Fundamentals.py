@@ -517,3 +517,95 @@ lengths
 
 ####################### FILES AND RESOURCE MANAGEMENT #############################
 
+f = open('wasteland.txt', mode='wt', encoding='utf-8')
+
+help(f)
+
+# writing to files
+f.write('This is the first line of text to be added to file')
+
+f.close()
+
+# reading files
+g = open('wasteland.txt', mode='rt', encoding='utf-8')
+
+g.readlines() # read as a list
+
+g.seek(0) # rewind back to the begining
+
+g.close()
+
+# appending to a file in text
+h = open('wasteland.txt', mode='at', encoding='utf-8')
+
+h.writelines(
+    ['son of man,\n',
+    'you cannot say, or guess, '
+    'for you know only,\n'
+    'a hep of broken images, '
+    'where the sun beats\n']
+)
+
+h.close
+
+""" when working with files, opening is the first step, work, then close
+    but with the "with-block" this those it for you """
+import sys
+
+def read_series(filename):
+    with open(filename, mode='rt', encoding='utf-8') as f:
+        return [ int(line.strip()) for line in f ]
+
+def main(filename):
+    series = read_series(filename)
+    print(series)
+
+if __name__ == '__main__':
+    main(sys.argv[1])
+
+############## UNIT TEST #####################
+
+import unittest
+
+class TextAnalysisTests(unittest.TestCase):
+    """ Tests for the ''analyze_text()'' function."""
+
+    def test_function_runs(self):
+        """ Basic smoke test """
+        analyze_text()
+
+if __name__ == '__main__':
+    unittest.main()
+
+
+
+################## PYTHON DEBUGGER ###################
+
+import pdb
+
+ps ax | grep palindrome
+
+top -pid 
+
+python3 -m pdb palindrome.py
+
+next # run thru next block of code
+
+next # run thru next block of code
+
+cont # execute script, if you noticed it has looped, ctl-C and exit
+
+list # will print code where it might be in a loop
+
+
+############## VIRTUAL ENVIRONMENTS #########################
+
+python -m venv venv3
+
+source venv3/bin/activate
+
+# Windows
+venv3\bin\activate
+
+deactivate
+
